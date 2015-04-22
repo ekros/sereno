@@ -1,11 +1,41 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="serenoApp">  
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Sereno - a lightweight monitoring system">
+    <meta name="author" content="Eric Ros <ericrosbh@gmail.com>">
+    <link rel="    icon" href="favicon.ico">
+
+    <!-- bootstrap css -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- font awesome -->
+    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
 	<title>Sereno monitoring system</title>
 </head>
 <body>
-	Hello! {{ '1 + 1 is ' }} {{ 1 + 1 }}
-
-	<script src="bower_components/angularjs/angular.js"></script>	
+	<h1>Nodes</h1>
+	<table ng-controller="nodeController as node">
+		<th>Name</th>
+		<th>IP</th>
+		<tr ng-repeat="n in node.nodes">
+			<td>{{ n.name }}</td>
+			<td>{{ n.ip }}</td>
+			<td ng-hide="n.up" style="background-color:red">THIS NODE IS DOWN</td>
+		</tr>
+	</table>
+	<script src="bower_components/angularjs/angular.js"></script>
+  	<script src="bower_components/angular-animate/angular-animate.js"></script>
+  	<script src="bower_components/angular-route/angular-route.js"></script>
+  	<script src="bower_components/angular-resource/angular-resource.js"></script>
+  	<script src="bower_components/angular-filters/angular-filters.js"></script>
+  	<script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/animations.js"></script>
+	<script src="js/filters.js"></script>
+	<script src="js/services.js"></script>
 </body>
 </html>
